@@ -1,6 +1,6 @@
 import sqlite3
 
-conn = sqlite3.connect ('test.db')
+conn = sqlite3.connect ('test2.db') #connect to database, or create it if not exists
 
 with conn:
     cur = conn.cursor()
@@ -11,9 +11,7 @@ with conn:
     conn.commit #Create the table for the assignent
 conn.close #close connection
 
-conn = sqlite3.connect ('test.db') #ooen connection
-
-
+conn = sqlite3.connect ('test2.db') #ooen connection
 #list of files
 fileList = ('information.docx', 'Hello.txt', 'myImage.png', \
                 'myMovie.mpg', 'World.txt', 'data.pdf', 'myPhoto.jpg')
@@ -24,5 +22,5 @@ for i in fileList:
         with conn:
             cur = conn.cursor() #grab cursor for command.
             cur.execute("INSERT INTO tbl_files (col_string) VALUES (?)", (i,))
-            print(i)
+            print(i) #print to console: i
 conn.close()
